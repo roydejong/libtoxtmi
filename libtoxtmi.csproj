@@ -8,10 +8,26 @@
     <RepositoryUrl>https://github.com/roydejong/libtoxtmi</RepositoryUrl>
     <Copyright>Copyright (c) 2019 Roy de Jong</Copyright>
     <Description>https://github.com/roydejong/libtoxtmi</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/roydejong/libtoxtmi</PackageProjectUrl>
+    <PackageTags>twitch, irc, tmi, chat, bot</PackageTags>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>libtoxtmi.pfx</AssemblyOriginatorKeyFile>
+    <Version>0.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="IrcDotNet" Version="0.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
