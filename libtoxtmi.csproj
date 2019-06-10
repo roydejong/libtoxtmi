@@ -17,7 +17,14 @@
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>libtoxtmi.pfx</AssemblyOriginatorKeyFile>
     <Version>0.1.0</Version>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Tests\**" />
+    <EmbeddedResource Remove="Tests\**" />
+    <None Remove="Tests\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="IrcDotNet" Version="0.7.0" />
