@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Authors>Roy de Jong</Authors>
+    <Product>Toxmeter Twitch TMI Client Library</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+    <RepositoryUrl>https://github.com/roydejong/libtoxtmi</RepositoryUrl>
+    <Copyright>Copyright (c) 2019 Roy de Jong</Copyright>
+    <Description>https://github.com/roydejong/libtoxtmi</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IrcDotNet" Version="0.7.0" />
+  </ItemGroup>
+
+</Project>
