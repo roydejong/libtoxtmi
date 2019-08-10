@@ -1,4 +1,5 @@
-﻿using System;
+﻿using libtoxtmi.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -295,6 +296,18 @@ namespace libtoxtmi.Models
         /// Gets whether this message sender had a bits charity donator badge.
         /// </summary>
         public bool IsBitsCharityDonator { get { return GetBadgeNames().Contains(BADGE_KEY_BITS_CHARITY); } }
+
+        /// <summary>
+        /// Indicates whether this chat message was sent by a well-known bot.
+        /// This is limited to a built-in list of bot names, so is not 100% reliable.
+        /// </summary>
+        public bool IsKnownBot
+        {
+            get
+            {
+                return KnownBots.UserDisplayNames.Contains(this.UserDisplayName, StringComparer.InvariantCultureIgnoreCase);
+            }
+        }
 
         /// <summary>
         /// Gets the subscriber badge level.
