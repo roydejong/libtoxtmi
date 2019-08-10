@@ -35,8 +35,9 @@ namespace libtoxtmi.Models
         /// The name of the channel.
         /// </summary>
         /// <remarks>
-        /// The "#" prefix is automatically omitted for this value.
-        /// May be set to NULL if this TmiMessage does not have a channel name (e.g. global user state).
+        ///  * The "#" prefix is automatically omitted for this value.
+        ///  * May be set to NULL if this TmiMessage does not have a channel name (e.g. global user state).
+        ///  * In case of private whispers, the channel name is your own username.
         /// </remarks>
         public string ChannelName = null;
 
@@ -48,6 +49,11 @@ namespace libtoxtmi.Models
         /// May be set to NULL if this TmiMessage does not have a message body (e.g. global user or room state updates).
         /// </remarks>
         public string Message = null;
+
+        /// <summary>
+        /// Indicates whether or not this was sent as a private message / whisper.
+        /// </summary>
+        public bool IsPrivateWhisper = false;
         #endregion
 
         #region Property helpers

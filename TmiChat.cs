@@ -95,7 +95,7 @@ namespace libtoxtmi
                 client.MotdReceived += Client_MotdReceived;
                 client.Disconnected += Client_Disconnected;
                 client.RawMessageReceived += Client_RawMessageReceived;
-                client.RawMessageSent += Client_RawMessageSent; ;
+                client.RawMessageSent += Client_RawMessageSent;
 
                 client.Connect(new DnsEndPoint(IRC_HOSTNAME, IRC_PORT_NONSSL), false, new IrcUserRegistrationInfo()
                 {

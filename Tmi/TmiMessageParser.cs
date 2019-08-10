@@ -37,6 +37,10 @@ namespace libtoxtmi.Tmi
              * e.Message.Parameters[1] == command "PRIVMSG"
              * e.Message.Parameters[2] == channel "#kinamazing"
              * e.Message.Parameters[3] == just the basic plain old message no markers "<3"
+             * 
+             * // What a WHISPER looks like:
+             * 
+             * @badges=twitchcon2018/1;color=#FF69B4;display-name=AFluHatinRapper;emotes=;message-id=19;thread-id=63469880_248897310;turbo=0;user-id=63469880;user-type= :afluhatinrapper!afluhatinrapper@afluhatinrapper.tmi.twitch.tv WHISPER toxmeter :test 123
              */
 
             var reader = new TmiIrcReader(raw);
@@ -70,6 +74,7 @@ namespace libtoxtmi.Tmi
             string commandName = reader.ReadNextUntil(' ');
             string channelName = null;
             string message = null;
+            bool isWhisper = false;
 
             switch (commandName)
             {
@@ -87,10 +92,16 @@ namespace libtoxtmi.Tmi
                     channelName = reader.ReadNextUntil(' ');
                     message = reader.ReadRemainder();
                     break;
+                case "WHISPER":
+                    // In case of whispers, the channel is your own username w/o # prefix
+                    isWhisper = true;
+                    channelName = reader.ReadNextUntil(' ');
+                    message = reader.ReadRemainder();
+                    break;
             }
 
             // Step 3: Clean up
-            if (channelName != null && channelName.Length > 1)
+            if (channelName != null && channelName.Length > 1 && !isWhisper)
                 channelName = channelName.ToString().Substring(1); // Skip "#"
 
             if (serverName != null && serverName.Length > 1)
@@ -102,7 +113,7 @@ namespace libtoxtmi.Tmi
             // Step 4: Factory 
             TmiMessage result;
 
-            if (commandName == "PRIVMSG")
+            if (commandName == "PRIVMSG" || commandName == "WHISPER")
             {
                 result = new TmiChatMessage();
             }
@@ -116,6 +127,7 @@ namespace libtoxtmi.Tmi
             result.Message = message;
             result.ServerName = serverName;
             result.StateProperties = stateProperties;
+            result.IsPrivateWhisper = isWhisper;
             return result;
         }
     }
