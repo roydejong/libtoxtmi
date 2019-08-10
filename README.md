@@ -13,7 +13,7 @@ This library was specifically designed to watch Twitch channels, and parse the T
 ## Installation
 To use the library, you must reference it in your project. [This package is available for installation on NuGet](https://www.nuget.org/packages/libtoxtmi):
 
-    PM> Install-Package libtoxtmi -Version 0.1.0  
+    PM> Install-Package libtoxtmi -Version 0.1.1
     
 Alternatively, you can [download binary releases](https://github.com/roydejong/libtoxtmi/releases) from the repository.
 
@@ -60,7 +60,6 @@ Notes when wrangling these events:
 |`CommandName`|string|The command name, e.g. `PRIVMSG` for a chat message or `ROOMSTATE` for a chat room status message.|
 |`ChannelName`|string?|The channel name, if available. The `#` IRC prefix is omitted. May be `NULL` for non-channel-specific messages.|
 |`Message`|string?|The message content, if available. The `:` IRC prefix is omitted. May be `NULL` for non-chat messages.|
-|`IsPrivateWhisper`|bool|If true, this was sent to the bot directly as a private message / whisper. (The channel name wil equal the bot username)|
 
 ### `TmiChatMessage` (inherits `TmiMessage`)
 
@@ -83,6 +82,8 @@ Notes when wrangling these events:
 |`IsPartner`|bool|If true, sender had a partner (verified checkmark) badge.|
 |`IsPremium`|bool|If true, sender had a ??? Twitch Prime ??? badge.|
 |`IsBitsCharityDonator`|bool|If true, sender had a bits cheer badge (charity gift variant).|
+|`IsPrivateWhisper`|bool|If true, this was sent to the bot directly as a private message / whisper. (The channel name wil equal the bot username)|
+|`IsKnownBot`|bool|If true, this was sent by a known Twitch chat bot.|
 
 #### Methods
 
