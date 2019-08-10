@@ -60,6 +60,7 @@ Notes when wrangling these events:
 |`CommandName`|string|The command name, e.g. `PRIVMSG` for a chat message or `ROOMSTATE` for a chat room status message.|
 |`ChannelName`|string?|The channel name, if available. The `#` IRC prefix is omitted. May be `NULL` for non-channel-specific messages.|
 |`Message`|string?|The message content, if available. The `:` IRC prefix is omitted. May be `NULL` for non-chat messages.|
+|`IsPrivateWhisper`|bool|If true, this was sent to the bot directly as a private message / whisper. (The channel name wil equal the bot username)|
 
 ### `TmiChatMessage` (inherits `TmiMessage`)
 
@@ -114,4 +115,5 @@ You can also use this library directly for its wonderful ability to parse TMI IR
 |`CommandName`|Maps to|
 |-------------|-------|
 |`PRIVMSG`|`TmiChatMessage`|
+|`WHISPER`|`TmiChatMessage`|
 |(default)|`TmiMessage`|
