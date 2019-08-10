@@ -113,8 +113,8 @@ You can also use this library directly for its wonderful ability to parse TMI IR
     
 `TmiMessageParser` will return a `TmiMessage` or a more specific subclass if appropriate, depending on the `CommandName`:
 
-|`CommandName`|Maps to|
-|-------------|-------|
-|`PRIVMSG`|`TmiChatMessage`|
-|`WHISPER`|`TmiChatMessage`|
-|(default)|`TmiMessage`|
+|`CommandName`|Maps to|Description|
+|-------------|-------|-----------|
+|`PRIVMSG`|`TmiChatMessage`|Normal chat message.|
+|`WHISPER`|`TmiChatMessage`|Private / whisper message.|
+|(default)|`TmiMessage`|Unimplemented commands, e.g. room state messages.|
